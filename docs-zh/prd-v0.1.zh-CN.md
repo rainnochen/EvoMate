@@ -1,5 +1,6 @@
 > 🧬 **[EvoMate](https://github.com/rainnochen/EvoMate/blob/main/README.md)** — *Agent Digital Genetics Lab*
 > [🏠 主页 / Home](https://github.com/rainnochen/EvoMate/blob/main/README.md) | [📖 最新 PRD](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/prd-current.zh-CN.md) | [🏗 架构文档](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/architecture.zh-CN.md) | [📝 开发日志](https://github.com/rainnochen/EvoMate/tree/main/开发日志) | [🤖 OpenClaw 接入](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/openclaw-evomate-integration-prd.zh-CN.md)
+
 ---
 
 # EvoMate PRD v0.1
@@ -152,22 +153,24 @@ docs-zh/README.zh-CN.md
 
 ## 5. 和 v0.1 产品说明书的对应关系
 
-| 产品说明书模块 | 当前实现状态 |
-|---|---|
-| Select Arena | 已实现 |
-| Evaluate Parent A / B | 已实现 |
-| Calculate Parent Baseline | 已实现 |
-| Extract / Load Parent Genomes | 已用 mock genome 实现 |
-| Genome Fusion | 已实现 |
-| Mutation | 已实现基础版 |
-| Generate Child Genome | 已实现 |
-| Evaluate Child in Same Arena | 已实现 |
-| Compare Child vs Parent Baseline | 已实现 |
-| Evolution Result | 已实现 |
-| 真实 Evolver 接入 | 未实现 |
-| 多 Child Candidate | 未实现 |
-| Export Child Genome JSON | 未实现 |
-| 真实 benchmark 执行 | 未实现 |
+
+| 产品说明书模块                          | 当前实现状态            |
+| -------------------------------- | ----------------- |
+| Select Arena                     | 已实现               |
+| Evaluate Parent A / B            | 已实现               |
+| Calculate Parent Baseline        | 已实现               |
+| Extract / Load Parent Genomes    | 已用 mock genome 实现 |
+| Genome Fusion                    | 已实现               |
+| Mutation                         | 已实现基础版            |
+| Generate Child Genome            | 已实现               |
+| Evaluate Child in Same Arena     | 已实现               |
+| Compare Child vs Parent Baseline | 已实现               |
+| Evolution Result                 | 已实现               |
+| 真实 Evolver 接入                    | 未实现               |
+| 多 Child Candidate                | 未实现               |
+| Export Child Genome JSON         | 未实现               |
+| 真实 benchmark 执行                  | 未实现               |
+
 
 ## 6. 当前边界
 
@@ -183,3 +186,4 @@ docs-zh/README.zh-CN.md
 1. 把 `AgentGenome` 和 `ArenaEvaluationResult` 写成稳定 JSON schema。
 2. 让 Fusion Engine 根据 Arena required loci 调整继承概率。
 3. 增加 `Export Child Genome JSON`，把 Demo 从展示推进到可交付资产。
+

@@ -253,3 +253,4 @@ module-manifest.json
 > 我们把 Agent 的经验压缩成 Gene，让下一代 Agent 继承的不只是人格和技能，而是一套可测试的行动协议。
 
 > 今天它是一个 Hackathon Sandbox，明天它可能是企业生成任务专属 Agent 的进化协议。
+

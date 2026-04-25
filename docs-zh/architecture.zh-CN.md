@@ -1,5 +1,6 @@
 > 🧬 **[EvoMate](https://github.com/rainnochen/EvoMate/blob/main/README.md)** — *Agent Digital Genetics Lab*
 > [🏠 主页 / Home](https://github.com/rainnochen/EvoMate/blob/main/README.md) | [📖 最新 PRD](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/prd-current.zh-CN.md) | [🏗 架构文档](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/architecture.zh-CN.md) | [📝 开发日志](https://github.com/rainnochen/EvoMate/tree/main/开发日志) | [🤖 OpenClaw 接入](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/openclaw-evomate-integration-prd.zh-CN.md)
+
 ---
 
 # EvoMate 技术架构说明
@@ -121,3 +122,4 @@ Hackathon 现场最怕两个问题：
 - 将 template Arena 输出替换为真实 Agent 执行。
 - 增加多代繁育与家谱视图。
 - 增加 replay / evaluation / selection loop。
+

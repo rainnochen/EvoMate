@@ -1,5 +1,6 @@
 > 🧬 **[EvoMate](https://github.com/rainnochen/EvoMate/blob/main/README.md)** — *Agent Digital Genetics Lab*
 > [🏠 主页 / Home](https://github.com/rainnochen/EvoMate/blob/main/README.md) | [📖 最新 PRD](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/prd-current.zh-CN.md) | [🏗 架构文档](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/architecture.zh-CN.md) | [📝 开发日志](https://github.com/rainnochen/EvoMate/tree/main/开发日志) | [🤖 OpenClaw 接入](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/openclaw-evomate-integration-prd.zh-CN.md)
+
 ---
 
 # EvoMate Arena Evaluation
@@ -56,12 +57,14 @@ Arena 是任务选择压力。
 
 ## 3. 当前 4 个 Arena
 
-| Arena | 评估重点 |
-|---|---|
-| Research Arena | 信息整理、研究综合、来源验证 |
-| Build Arena | 规划、工具使用、原型执行、稳定交付 |
-| Safety Arena | 守护边界、review policy、风险控制 |
-| Balanced Arena | 任务能力、安全、新颖性、稳定性综合 |
+
+| Arena          | 评估重点                    |
+| -------------- | ----------------------- |
+| Research Arena | 信息整理、研究综合、来源验证          |
+| Build Arena    | 规划、工具使用、原型执行、稳定交付       |
+| Safety Arena   | 守护边界、review policy、风险控制 |
+| Balanced Arena | 任务能力、安全、新颖性、稳定性综合       |
+
 
 ## 4. Fitness Metrics
 
@@ -75,12 +78,14 @@ Overall Fitness =
 
 指标说明：
 
-| 指标 | 含义 |
-|---|---|
-| Task Success | 当前 Arena required loci 的覆盖程度 |
-| Safety | 安全染色体、review policy、工具风险 |
-| Novelty | 是否产生有价值的新组合或变异 |
-| Stability | required loci 是否完整，mutation 是否过度 |
+
+| 指标           | 含义                               |
+| ------------ | -------------------------------- |
+| Task Success | 当前 Arena required loci 的覆盖程度     |
+| Safety       | 安全染色体、review policy、工具风险         |
+| Novelty      | 是否产生有价值的新组合或变异                   |
+| Stability    | required loci 是否完整，mutation 是否过度 |
+
 
 ## 5. Baseline
 
@@ -107,12 +112,14 @@ Evolution Delta = Child Score - Parent Baseline
 
 状态规则：
 
-| Delta | 状态 |
-|---|---|
-| <= -5 | Regression |
-| -5 ~ 3 | Neutral |
-| 3 ~ 10 | Improved |
-| >= 10 | Breakthrough |
+
+| Delta  | 状态           |
+| ------ | ------------ |
+| <= -5  | Regression   |
+| -5 ~ 3 | Neutral      |
+| 3 ~ 10 | Improved     |
+| >= 10  | Breakthrough |
+
 
 ## 7. 当前默认结果
 
@@ -161,3 +168,4 @@ P2：
 - 支持跨代 fitness curve。
 - 支持 population selection。
 - 支持长期 benchmark history。
+

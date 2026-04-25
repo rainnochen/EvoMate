@@ -1,8 +1,10 @@
 > 🧬 **[EvoMate](https://github.com/rainnochen/EvoMate/blob/main/README.md)** — *Agent Digital Genetics Lab*
 > [🏠 主页 / Home](https://github.com/rainnochen/EvoMate/blob/main/README.md) | [📖 最新 PRD](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/prd-current.zh-CN.md) | [🏗 架构文档](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/architecture.zh-CN.md) | [📝 开发日志](https://github.com/rainnochen/EvoMate/tree/main/开发日志) | [🤖 OpenClaw 接入](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/openclaw-evomate-integration-prd.zh-CN.md)
----
+
+--- 
 
 ---
+
 name: evomate-evolve
 description: Connect your OpenClaw agent to the EvoMate Evolution Lab. Create or join a private evolution room using a Room Code, then breed a next-generation child agent through real-time genetic fusion with a partner agent.
 tags: [evolution, genetics, multiplayer, agent, evomate, experimental]
@@ -16,8 +18,9 @@ metadata:
   env_declarations:
     - name: EVOMATE_SERVER_URL
       required: false
-      default: "http://127.0.0.1:3030"
-      description: EvoMate Evolution Lab server URL. Change if running on a shared machine.
+      default: "[http://127.0.0.1:3030](http://127.0.0.1:3030)"
+  description: EvoMate Evolution Lab server URL. Change if running on a shared machine.
+
 ---
 
 # EvoMate Evolution Skill 🧬
@@ -31,10 +34,13 @@ Connect your OpenClaw agent to the **EvoMate Evolution Lab** — a real-time evo
 ## Two Ways to Start
 
 ### 🔑 Option A — Create a Room (you go first)
+
 Tell your agent:
+
 > **"Start an EvoMate evolution session. I want to create a room."**
 
 Your agent will:
+
 1. Extract your agent's DNA (Soul, Skills, Memory)
 2. Execute a skill challenge (you describe your task)
 3. Create a private room → receive a **Room Code** like `WOLF-4829`
@@ -42,10 +48,13 @@ Your agent will:
 5. When they join → fusion happens automatically → child born 🎉
 
 ### 🚪 Option B — Join a Room (your partner already created one)
+
 Tell your agent:
+
 > **"Join evolution room WOLF-4829"** *(use the code your partner shared)*
 
 Your agent will:
+
 1. Extract your agent's DNA
 2. Execute a skill challenge
 3. Join the room → fusion starts immediately → child born 🎉
@@ -55,6 +64,7 @@ Your agent will:
 ## Full Conversation Examples
 
 ### Creating a room:
+
 ```
 User:  Start an EvoMate evolution. I want to create a room.
        My skill challenge is: design a microservices architecture.
@@ -82,6 +92,7 @@ Agent: 🧬 EvoMate Evolution Protocol initiated.
 ```
 
 ### Joining a room:
+
 ```
 User:  Join evolution room WOLF-4829.
        My skill challenge is: write a product launch tweet.
@@ -112,15 +123,18 @@ Agent: 🧬 Joining EvoMate room WOLF-4829...
 All API calls use `{EVOMATE_SERVER_URL}` (default: `http://127.0.0.1:3030`).
 
 ### Step 0: Verify server is running
+
 ```
 GET {EVOMATE_SERVER_URL}/health
 → { "status": "ok", "openRooms": 2, "mode": "EvoMate Evolution Lab — Room Code Mode" }
 ```
+
 If this fails, the EvoMate server is not running. Ask the organizer to start it.
 
 ---
 
 ### Step 1a: Create a Room (Host)
+
 ```
 POST {EVOMATE_SERVER_URL}/api/room/create
 {
@@ -149,6 +163,7 @@ POST {EVOMATE_SERVER_URL}/api/room/create
 ```
 
 **Then poll for partner arrival:**
+
 ```
 GET {EVOMATE_SERVER_URL}/api/room/status?token=host-xxx
 → { "status": "waiting_guest", "guestName": null }       (still waiting)
@@ -158,6 +173,7 @@ GET {EVOMATE_SERVER_URL}/api/room/status?token=host-xxx
 ---
 
 ### Step 1b: Join a Room (Guest)
+
 ```
 POST {EVOMATE_SERVER_URL}/api/room/join
 {
@@ -183,11 +199,13 @@ POST {EVOMATE_SERVER_URL}/api/room/join
     }
   }
 ```
+
 *(Guest gets the result immediately — fusion is instant!)*
 
 ---
 
 ### Step 2: Cancel a room (if needed)
+
 ```
 POST {EVOMATE_SERVER_URL}/api/room/cancel
 { "token": "host-xxx" }
@@ -195,6 +213,7 @@ POST {EVOMATE_SERVER_URL}/api/room/cancel
 ```
 
 ### List open rooms (for discovery)
+
 ```
 GET {EVOMATE_SERVER_URL}/api/rooms
 → { "rooms": [{ "roomCode": "WOLF-4829", "hostName": "Atlas", "ageSeconds": 45 }] }
@@ -224,6 +243,7 @@ When building the genome object, pull from your agent's actual profile:
 ```
 
 **Sources:**
+
 - `soul` / `archetype` → from `SOUL.md` or `IDENTITY.md`
 - `skills` → from active skills allowlist (`skills.status` method)
 - `memory` → recent session highlights or active memory entries
@@ -244,12 +264,14 @@ When building the genome object, pull from your agent's actual profile:
 
 The mission you give your agent shapes the Compatibility score. Authentic challenges = more meaningful children.
 
-| Agent type | Good challenge |
-|-----------|----------------|
-| Engineer / Analyst | "Design architecture for a distributed queue" |
-| Writer / Creative | "Write a 60-sec pitch for this product" |
-| Strategist / Planner | "Break down a 2-week sprint" |
-| Support / Empathetic | "Draft a reply to an upset customer" |
+
+| Agent type           | Good challenge                                |
+| -------------------- | --------------------------------------------- |
+| Engineer / Analyst   | "Design architecture for a distributed queue" |
+| Writer / Creative    | "Write a 60-sec pitch for this product"       |
+| Strategist / Planner | "Break down a 2-week sprint"                  |
+| Support / Empathetic | "Draft a reply to an upset customer"          |
+
 
 ---
 
@@ -264,12 +286,14 @@ The mission you give your agent shapes the Compatibility score. Authentic challe
 
 ## Troubleshooting
 
-| Problem | Fix |
-|---------|-----|
-| `Room "WOLF-4829" not found` | Code expired (>30 min) or typo. Ask host to create a new room. |
-| `You cannot join your own room` | You and your partner must use different OpenClaw instances. |
-| `Room already fusing` | Someone else joined first. Host should create a fresh room. |
-| Server unreachable | EvoMate server not running. Run `npm run dev` in evolver-hackathon. |
+
+| Problem                         | Fix                                                                 |
+| ------------------------------- | ------------------------------------------------------------------- |
+| `Room "WOLF-4829" not found`    | Code expired (>30 min) or typo. Ask host to create a new room.      |
+| `You cannot join your own room` | You and your partner must use different OpenClaw instances.         |
+| `Room already fusing`           | Someone else joined first. Host should create a fresh room.         |
+| Server unreachable              | EvoMate server not running. Run `npm run dev` in evolver-hackathon. |
+
 
 ---
 
@@ -278,3 +302,4 @@ The mission you give your agent shapes the Compatibility score. Authentic challe
 - `taskflow` — Multi-step evolution experiments that survive restarts
 - `session-logs` — Review your session memory before genome extraction
 - `summarize` — Summarize skill output before submitting to EvoMate
+

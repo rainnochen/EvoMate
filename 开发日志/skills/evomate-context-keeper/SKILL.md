@@ -1,7 +1,7 @@
 ---
-name: evomate-context-keeper
+
+## name: evomate-context-keeper
 description: Use this skill when working on the EvoMate hackathon project and needing to recover, summarize, update, or preserve project context from prior conversations, development logs, PRDs, pitch materials, Evolver/OpenClaw research, or implementation changes. This skill keeps the project memory coherent across fast hackathon iterations.
----
 
 # EvoMate Context Keeper
 

@@ -1,5 +1,6 @@
 > 🧬 **[EvoMate](https://github.com/rainnochen/EvoMate/blob/main/README.md)** — *Agent Digital Genetics Lab*
 > [🏠 主页 / Home](https://github.com/rainnochen/EvoMate/blob/main/README.md) | [📖 最新 PRD](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/prd-current.zh-CN.md) | [🏗 架构文档](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/architecture.zh-CN.md) | [📝 开发日志](https://github.com/rainnochen/EvoMate/tree/main/开发日志) | [🤖 OpenClaw 接入](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/openclaw-evomate-integration-prd.zh-CN.md)
+
 ---
 
 # Architecture
@@ -82,3 +83,4 @@ Preset Agent Genomes
 - `src/core/fusion-engine.js`: replace deterministic fusion with `evolver` GEP asset generation.
 - `src/core/arena-engine.js`: replace template outputs with live agent execution.
 - `data/mock/agents.json`: add more parent agents and family-tree fixtures.
+

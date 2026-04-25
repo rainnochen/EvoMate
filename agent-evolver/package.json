@@ -1,0 +1,9 @@
+{
+  "name": "agent-evolver",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "evolve": "node src/pipeline/evolve.js --parentA agents/parent_a/agent.md --parentB agents/parent_b/agent.md --profile balanced"
+  }
+}
