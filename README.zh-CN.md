@@ -6,11 +6,11 @@ EvoMate 是专为黑客马拉松（Red Pill / Build For Future 赛道）设计�
 
 ## 核心演示流程 (MVP Loop)
 
-1. **浏览** 父代 Agent 的“基因组”配置。
-2. 在匹配室中 **选择** 两个父代 Agent。
-3. **检查** 它们的兼容性和突变潜力。
-4. **触发** DNA 融合（Fusion）。
-5. **揭晓** 诞生的子代 Agent 及其基因报告。
+1. **选择** 父代 Agent 并提供技能指令（Skill Instruction）。
+2. **执行** 技能，Agent 通过本地 Mock 或接入真实的 OpenClaw Gateway 返回结果。
+3. **匹配** 其他在线用户（使用 Room Code 房间码确保定向配对）。
+4. **触发** DNA 融合（Fusion），系统计算静态基因与动态技能执行的兼容度。
+5. **揭晓** 诞生的子代 Agent 及其基因报告（继承与突变日志）。
 6. 在竞技场任务中 **对比** 评估父代和子代的表现。
 
 ## 项目结构
@@ -18,11 +18,13 @@ EvoMate 是专为黑客马拉松（Red Pill / Build For Future 赛道）设计�
 - `apps/web/`：静态 MVP 演示应用前端。
 - `data/mock/`：预设的 Agent 数据、任务和文本。
 - `src/core/`：核心算法框架（包含兼容性引擎、融合引擎和竞技场评估引擎）。
+- `src/adapters/`：OpenClaw Gateway 真实网关适配层。
+- `skill/`：OpenClaw 原生 EvoMate 进化技能 (`SKILL.md`)。
 - `docs/`：英文设计文档、架构图和演示脚本。
-- `docs-zh/`：中文产品文档、OpenClaw 集成计划。
+- `docs-zh/`：中文产品文档、OpenClaw 集成计划、各个版本的 PRD。
 - `lightning-pitch/`：闪电路演脚本、提示词和视觉资产。
-- `开发日志/`：中文开发日志。
-- `scripts/`：本地开发服务器。
+- `开发日志/`：中文开发日志，记录每次迭代的决策与验证。
+- `scripts/`：本地开发服务器（包含 Socket.io 和 REST API 匹配大厅）。
 - `分布式开发机制.zh-CN.md`：多人并行开发的契约和规范。
 - `module-manifest.json`：机器可读的模块描述。
 

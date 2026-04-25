@@ -19,25 +19,34 @@ Why this direction:
 - it makes abstract agent capability formation visible
 - it can still become a future enterprise agent optimization method
 
+## New Features (v0.5)
+
+- **OpenClaw Gateway Integration**: Agents can now execute skills and return real LLM responses directly via the OpenClaw Gateway.
+- **Room Code Matchmaking**: No more random matchmaking! Users can create or join private evolution rooms using shareable codes (e.g., `WOLF-4829`) to ensure they pair with their intended partner.
+- **EvoMate Evolution Skill**: A native OpenClaw skill (`skill/SKILL.md`) that lets users trigger the entire evolution process through natural language conversation without opening a browser.
+
 ## MVP loop
 
 1. Browse parent agent genome profiles.
-2. Select two parents in the match room.
-3. Inspect compatibility and mutation potential.
-4. Trigger DNA fusion.
-5. Reveal the child agent and genetic report.
-6. Compare parent and child expression in an arena task.
+2. Provide a skill instruction via OpenClaw or the web UI.
+3. Match with a partner using a Room Code (or via web lobby).
+4. Inspect compatibility and execution synergy.
+5. Trigger DNA fusion.
+6. Reveal the child agent and genetic report.
+7. Compare parent and child expression in an arena task.
 
 ## Project structure
 
 - `apps/web/`: static MVP demo app.
 - `data/mock/`: preset agents, arena task, and language for demo.
 - `src/core/`: framework-level MVP logic for compatibility, fusion, Gene recombination, and arena output.
+- `src/adapters/`: adapters for OpenClaw Gateway integration.
+- `skill/`: native OpenClaw skill definition (`SKILL.md`).
 - `docs/`: PRD, architecture, MVP plan, and demo script.
 - `docs-zh/`: Chinese product, architecture, OpenClaw integration, and development documents.
 - `lightning-pitch/`: lightning pitch scripts, prompts, and generated visual assets.
 - `开发日志/`: Chinese development logs and iteration rules.
-- `scripts/`: local server and future automation helpers.
+- `scripts/`: local server with Socket.io and REST APIs for matchmaking.
 - `分布式开发机制.zh-CN.md`: distributed development rules, module ownership, and assembly contracts.
 - `module-manifest.json`: machine-readable module and contract manifest.
 
