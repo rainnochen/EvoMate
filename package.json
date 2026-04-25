@@ -1,0 +1,14 @@
+{
+  "name": "evomate-hackathon",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hackathon MVP scaffold for EvoMate, an Agent digital genetics lab built on EvoMap and evolver ideas.",
+  "scripts": {
+    "dev": "node scripts/dev-server.js",
+    "start": "node scripts/dev-server.js",
+    "check": "node --check scripts/dev-server.js && node --check apps/web/app.js && node --check src/core/compatibility-engine.js && node --check src/core/genome-engine.js && node --check src/core/fusion-engine.js && node --check src/core/gene-fusion-engine.js && node --check src/core/evaluation-engine.js && node --check src/core/evolution-service.js && node --check src/core/arena-engine.js && node --check src/integrations/evolver/asset-to-genome.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

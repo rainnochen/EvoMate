@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EvoMate</title>
+    <link rel="stylesheet" href="/apps/web/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="lab-rail" aria-label="EvoMate lab navigation">
+        <div class="brand-mark">EM</div>
+        <nav>
+          <a href="#entrance">Lab</a>
+          <a href="#match-room">Match</a>
+          <a href="#fusion-chamber">Fusion</a>
+          <a href="#child-report">Child</a>
+          <a href="#arena">Arena</a>
+        </nav>
+      </aside>
+
+      <main class="lab-stage">
+        <section id="entrance" class="section entrance-section">
+          <div>
+            <p class="eyebrow">Agent Digital Genetics Lab</p>
+            <h1>EvoMate</h1>
+            <p class="intro-copy">
+              Fuse parent genomes, mutate a child agent, and prove evolution with Arena fitness delta.
+            </p>
+          </div>
+          <div class="lab-status">
+            <span>Track</span>
+            <strong>Red Pill</strong>
+            <span>Mode</span>
+            <strong>Future Sandbox</strong>
+            <span>Genome Layers</span>
+            <strong>Soul / Skills / Memory / Wiki / Gene</strong>
+          </div>
+        </section>
+
+        <section id="match-room" class="section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Step 1</p>
+              <h2>Arena & Parent Selection</h2>
+            </div>
+            <button id="breed-button" class="primary-action" type="button">Breed Selected Agents</button>
+          </div>
+
+          <div id="arena-selector" class="arena-selector"></div>
+
+          <div class="match-layout">
+            <div>
+              <div id="agent-grid" class="agent-grid"></div>
+            </div>
+            <aside class="compatibility-panel" aria-live="polite">
+              <p class="eyebrow">Compatibility</p>
+              <div class="score-dial">
+                <strong id="compat-total">--</strong>
+                <span>match score</span>
+              </div>
+              <div id="compat-bars" class="metric-bars"></div>
+              <p id="compat-explanation" class="panel-note"></p>
+              <div id="parent-evaluation" class="parent-evaluation"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="fusion-chamber" class="section fusion-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Step 2</p>
+              <h2>Fusion Chamber</h2>
+            </div>
+            <span id="fusion-state" class="state-badge">Awaiting breed signal</span>
+          </div>
+          <div class="fusion-grid">
+            <div class="dna-chamber" aria-hidden="true">
+              <div class="strand strand-a"></div>
+              <div class="strand strand-b"></div>
+              <div class="pulse-core">GENE</div>
+            </div>
+            <div id="fusion-log" class="event-log"></div>
+          </div>
+        </section>
+
+        <section id="child-report" class="section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Step 3</p>
+              <h2>Child Report</h2>
+            </div>
+            <span id="child-rarity" class="state-badge">No child yet</span>
+          </div>
+          <div id="child-panel" class="child-panel empty-state">
+            Select two parent agents and start breeding.
+          </div>
+        </section>
+
+        <section id="arena" class="section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Step 4</p>
+              <h2>Arena Evaluation</h2>
+            </div>
+            <span id="arena-task" class="task-label"></span>
+          </div>
+          <div id="evolution-delta" class="evolution-delta empty-state">
+            Evolution delta appears after child generation.
+          </div>
+          <div id="arena-grid" class="arena-grid empty-state">
+            Arena output appears after child generation.
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/apps/web/app.js"></script>
+  </body>
+</html>

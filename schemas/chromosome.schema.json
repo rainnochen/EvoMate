@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evomate.dev/schemas/chromosome.schema.json",
+  "title": "EvoMate Chromosome",
+  "type": "object",
+  "required": ["chromosome_id", "label", "loci"],
+  "properties": {
+    "chromosome_id": { "type": "string" },
+    "id": { "type": "string" },
+    "label": { "type": "string" },
+    "loci": {
+      "type": "array",
+      "items": {
+        "$ref": "./locus.schema.json"
+      }
+    }
+  },
+  "additionalProperties": true
+}

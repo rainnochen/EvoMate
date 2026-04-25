@@ -1,0 +1,976 @@
+:root {
+  --bg: #f5f7f2;
+  --ink: #17201e;
+  --muted: #5a6460;
+  --line: #d7ddd5;
+  --panel: #ffffff;
+  --panel-2: #eef4f1;
+  --teal: #007c89;
+  --teal-deep: #035d65;
+  --coral: #ff5a5f;
+  --lime: #b8f05a;
+  --violet: #6254d9;
+  --shadow: 0 16px 40px rgba(23, 32, 30, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, rgba(0, 124, 137, 0.06) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(98, 84, 217, 0.04) 1px, transparent 1px),
+    var(--bg);
+  background-size: 28px 28px;
+  font-family: ui-sans-serif, "Avenir Next", "Segoe UI", sans-serif;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.lab-rail {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 20px 14px;
+  border-right: 1px solid var(--line);
+  background: rgba(245, 247, 242, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.brand-mark {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 28px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  font-weight: 900;
+  letter-spacing: 0;
+  background: var(--lime);
+}
+
+.lab-rail nav {
+  display: grid;
+  gap: 10px;
+}
+
+.lab-rail a {
+  display: block;
+  padding: 10px 8px;
+  border-radius: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  text-align: center;
+}
+
+.lab-rail a:hover {
+  color: var(--ink);
+  background: var(--panel-2);
+}
+
+.lab-stage {
+  width: min(1280px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 56px;
+}
+
+.section {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.entrance-section {
+  min-height: 420px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 28px;
+  align-items: end;
+  padding-top: 40px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--teal-deep);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 16px;
+  font-size: 82px;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 32px;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin-bottom: 6px;
+  font-size: 20px;
+  letter-spacing: 0;
+}
+
+h4 {
+  margin-bottom: 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal-deep);
+}
+
+.intro-copy {
+  max-width: 760px;
+  margin-bottom: 0;
+  font-size: 24px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.lab-status,
+.compatibility-panel,
+.agent-card,
+.child-panel,
+.arena-card,
+.event-log {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.lab-status {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding: 20px;
+}
+
+.lab-status span {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.lab-status strong {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.arena-selector {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.arena-option {
+  min-height: 118px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.arena-option:hover,
+.arena-option.selected {
+  transform: translateY(-2px);
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0, 124, 137, 0.12);
+}
+
+.arena-option span,
+.arena-option strong,
+.arena-option small {
+  display: block;
+}
+
+.arena-option span {
+  margin-bottom: 8px;
+  color: var(--coral);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.arena-option strong {
+  min-height: 42px;
+}
+
+.arena-option small {
+  color: var(--muted);
+}
+
+.primary-action {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--teal);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.primary-action:hover {
+  background: var(--teal-deep);
+}
+
+.secondary-action {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--teal);
+  border-radius: 8px;
+  color: var(--teal-deep);
+  background: rgba(255, 255, 255, 0.84);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.secondary-action:hover {
+  background: var(--panel-2);
+}
+
+.match-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 18px;
+  align-items: start;
+}
+
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.agent-card {
+  min-height: 420px;
+  padding: 16px;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.agent-card:hover,
+.agent-card.selected {
+  transform: translateY(-2px);
+  border-color: var(--teal);
+}
+
+.agent-card.selected {
+  box-shadow: 0 0 0 3px rgba(0, 124, 137, 0.14), var(--shadow);
+}
+
+.agent-topline,
+.child-identity {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.avatar {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--ink);
+  background: linear-gradient(135deg, var(--lime), #6ee7d8);
+  font-weight: 900;
+  border: 1px solid var(--ink);
+}
+
+.child-avatar {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, var(--lime), var(--coral), #65d6ff);
+}
+
+.parent-label {
+  display: inline-block;
+  margin-bottom: 4px;
+  color: var(--coral);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.agent-topline p,
+.mini-list p,
+.panel-note,
+.arena-card small,
+.child-identity p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.trait-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.trait-row span,
+.state-badge,
+.task-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.radar-block,
+.metric-bars {
+  display: grid;
+  gap: 10px;
+}
+
+.radar-row,
+.metric-row {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) 34px;
+  gap: 10px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.radar-row strong,
+.metric-row strong {
+  text-align: right;
+}
+
+.radar-track,
+.metric-track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e4eae6;
+}
+
+.radar-track i,
+.metric-track i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--teal), var(--lime));
+}
+
+.mini-list {
+  margin-top: 16px;
+}
+
+.mini-list strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal-deep);
+}
+
+.gene-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.gene-chip {
+  display: inline-flex;
+  max-width: 100%;
+  padding: 6px 8px;
+  border: 1px solid rgba(0, 124, 137, 0.22);
+  border-radius: 999px;
+  background: rgba(184, 240, 90, 0.16);
+  color: var(--teal-deep);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.gene-chip.muted {
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.chromosome-strip {
+  display: grid;
+  gap: 7px;
+}
+
+.chromosome-row {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+}
+
+.chromosome-row span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.chromosome-loci {
+  display: flex;
+  gap: 3px;
+  min-width: 0;
+}
+
+.chromosome-loci i {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), var(--lime));
+}
+
+.chromosome-loci i.locked {
+  background: linear-gradient(90deg, #c7d0cc, #ffffff);
+  border: 1px solid #b7c0bc;
+}
+
+.compatibility-panel {
+  position: sticky;
+  top: 24px;
+  padding: 18px;
+}
+
+.score-dial {
+  width: 156px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  margin: 14px auto 18px;
+  border-radius: 50%;
+  border: 10px solid var(--lime);
+  background: #f9fbf7;
+}
+
+.score-dial strong {
+  display: block;
+  font-size: 46px;
+  line-height: 1;
+}
+
+.score-dial span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.parent-evaluation {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.score-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.score-pair span,
+.baseline-card,
+.fitness-score,
+.evolution-delta > div {
+  padding: 12px;
+  border: 1px solid rgba(0, 124, 137, 0.16);
+  border-radius: 8px;
+  background: rgba(0, 124, 137, 0.06);
+}
+
+.score-pair strong,
+.baseline-card strong,
+.fitness-score strong,
+.evolution-delta strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.baseline-card span,
+.baseline-card small,
+.fitness-score span,
+.evolution-delta span,
+.evolution-delta small {
+  display: block;
+  color: var(--muted);
+}
+
+.fusion-grid {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.dna-chamber {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(0, 124, 137, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 90, 95, 0.08) 1px, transparent 1px),
+    #101816;
+  background-size: 22px 22px;
+}
+
+.strand {
+  position: absolute;
+  top: 44px;
+  bottom: 44px;
+  width: 46%;
+  border: 2px solid rgba(184, 240, 90, 0.75);
+  border-radius: 50%;
+  transform: rotate(18deg);
+}
+
+.strand-a {
+  left: 15%;
+}
+
+.strand-b {
+  right: 15%;
+  border-color: rgba(255, 90, 95, 0.75);
+  transform: rotate(-18deg);
+}
+
+.pulse-core {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.dna-chamber.is-running .strand-a {
+  animation: orbitA 1.4s linear infinite;
+}
+
+.dna-chamber.is-running .strand-b {
+  animation: orbitB 1.4s linear infinite;
+}
+
+.dna-chamber.is-running .pulse-core {
+  animation: pulseCore 700ms ease-in-out infinite alternate;
+}
+
+.event-log {
+  min-height: 340px;
+  padding: 16px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  background: #111917;
+  color: #e9fff3;
+}
+
+.log-line {
+  padding: 10px 12px;
+  border-left: 3px solid var(--lime);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 0 8px 8px 0;
+}
+
+.child-panel {
+  padding: 18px;
+}
+
+.empty-state {
+  min-height: 120px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.candidate-panel,
+.export-panel {
+  margin-top: 18px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.candidate-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.candidate-head h4 {
+  margin-bottom: 0;
+}
+
+.candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.candidate-card {
+  padding: 12px;
+  border: 1px solid rgba(0, 124, 137, 0.14);
+  border-radius: 8px;
+  background: var(--panel-2);
+}
+
+.candidate-card.selected {
+  border-color: var(--teal);
+  background: rgba(184, 240, 90, 0.2);
+  box-shadow: 0 0 0 3px rgba(184, 240, 90, 0.22);
+}
+
+.candidate-card span,
+.candidate-card small {
+  display: block;
+  color: var(--muted);
+}
+
+.candidate-card strong {
+  display: block;
+  margin: 6px 0;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.report-grid section {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+}
+
+.report-grid ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.mutation-notice {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 8px;
+  color: #111917;
+  background: linear-gradient(90deg, var(--lime), #65d6ff 55%, #ffc1c3);
+}
+
+.mutation-notice strong {
+  flex: 0 0 auto;
+}
+
+.gene-report {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.gene-report div,
+.fitness-list {
+  padding: 12px;
+  border: 1px solid rgba(0, 124, 137, 0.18);
+  border-radius: 8px;
+  background: rgba(0, 124, 137, 0.07);
+}
+
+.gene-report span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.gene-report strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--teal-deep);
+}
+
+.fitness-list {
+  margin-top: 10px;
+}
+
+.fitness-list p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.export-panel textarea {
+  width: 100%;
+  min-height: 220px;
+  resize: vertical;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: #e9fff3;
+  background: #111917;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.share-card {
+  display: grid;
+  gap: 4px;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(184, 240, 90, 0.28), rgba(101, 214, 255, 0.22));
+}
+
+.share-card span {
+  color: var(--muted);
+}
+
+.fitness-dashboard {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(184, 240, 90, 0.14);
+}
+
+.metric-row.compact {
+  grid-template-columns: 112px minmax(0, 1fr) 34px;
+}
+
+.evolution-delta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.evolution-delta.positive > div {
+  background: rgba(184, 240, 90, 0.18);
+}
+
+.evolution-delta.neutral > div {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.evolution-delta.negative > div {
+  background: rgba(255, 90, 95, 0.12);
+}
+
+.arena-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.arena-card {
+  min-height: 280px;
+  padding: 18px;
+}
+
+.arena-card span {
+  color: var(--coral);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.arena-card p {
+  line-height: 1.55;
+}
+
+.arena-card small {
+  display: block;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.child-output {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(184, 240, 90, 0.36), var(--shadow);
+}
+
+@keyframes orbitA {
+  from {
+    transform: rotate(18deg) scale(1);
+  }
+  to {
+    transform: rotate(378deg) scale(0.96);
+  }
+}
+
+@keyframes orbitB {
+  from {
+    transform: rotate(-18deg) scale(1);
+  }
+  to {
+    transform: rotate(-378deg) scale(0.96);
+  }
+}
+
+@keyframes pulseCore {
+  from {
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@media (max-width: 980px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-rail {
+    position: static;
+    height: auto;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    overflow-x: auto;
+  }
+
+  .brand-mark {
+    margin: 0;
+  }
+
+  .lab-rail nav {
+    display: flex;
+    gap: 8px;
+  }
+
+  .entrance-section,
+  .arena-selector,
+  .match-layout,
+  .fusion-grid,
+  .report-grid,
+  .candidate-grid,
+  .gene-report,
+  .fitness-dashboard,
+  .evolution-delta,
+  .arena-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compatibility-panel {
+    position: static;
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 720px) {
+  .lab-stage {
+    width: min(100% - 20px, 1280px);
+    padding-top: 10px;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .agent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-copy {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evomate.dev/schemas/locus.schema.json",
+  "title": "EvoMate Locus",
+  "type": "object",
+  "required": [
+    "locus_id",
+    "path",
+    "type",
+    "strength",
+    "heritability",
+    "dominance",
+    "mutation_rate",
+    "gene",
+    "status"
+  ],
+  "properties": {
+    "locus_id": { "type": "string" },
+    "path": { "type": "string" },
+    "name": { "type": "string" },
+    "type": { "type": "string" },
+    "strength": { "type": "number", "minimum": 0, "maximum": 100 },
+    "heritability": { "type": "number", "minimum": 0, "maximum": 1 },
+    "dominance": { "type": "number", "minimum": 0, "maximum": 1 },
+    "mutation_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source_parent": {
+      "type": "string",
+      "enum": ["parent_a", "parent_b", "mixed"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "locked", "mutated"]
+    },
+    "gene": {
+      "type": "object",
+      "required": ["gene_id", "content", "strength"],
+      "properties": {
+        "gene_id": { "type": "string" },
+        "content": { "type": "string" },
+        "strength": { "type": "number", "minimum": 0, "maximum": 1 }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
