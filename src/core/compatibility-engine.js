@@ -63,15 +63,30 @@ function scoreMutationPotential(parentA, parentB) {
   return clampScore(36 + average(radarGap) * 0.7 + skillSpread * 3);
 }
 
-export function calculateCompatibility(parentA, parentB) {
+export function calculateCompatibility(parentA, parentB, skillResults = null) {
   const personality = scorePersonality(parentA, parentB);
   const skill = scoreSkillComplementarity(parentA, parentB);
   const knowledge = scoreKnowledgeDiversity(parentA, parentB);
   const mutation = scoreMutationPotential(parentA, parentB);
-  const total = clampScore(personality * 0.25 + skill * 0.3 + knowledge * 0.2 + mutation * 0.25);
+  
+  let total = clampScore(personality * 0.25 + skill * 0.3 + knowledge * 0.2 + mutation * 0.25);
+  let executionSynergy = 0;
+
+  if (skillResults && skillResults.length === 2) {
+    const [resultA, resultB] = skillResults;
+    // Simulate synergy based on different time taken or approach length
+    const timeDiff = Math.abs(resultA.timeTakenMs - resultB.timeTakenMs);
+    const approachDiff = Math.abs(resultA.approach.length - resultB.approach.length);
+    
+    // If they have distinct approaches, synergy goes up!
+    executionSynergy = clampScore(20 + timeDiff * 0.05 + approachDiff * 0.5);
+    total = clampScore(total * 0.8 + executionSynergy * 0.2);
+  }
 
   let explanation = 'The pair has balanced compatibility and enough variation for a stable child genome.';
-  if (mutation >= 78 && skill >= 76) {
+  if (executionSynergy > 70) {
+    explanation = 'Their distinct skill execution approaches created massive synergy, boosting overall compatibility!';
+  } else if (mutation >= 78 && skill >= 76) {
     explanation = 'High skill complementarity and strong genome distance create excellent mutation potential.';
   } else if (personality < 62) {
     explanation = 'The pair has personality tension, but that tension may produce a distinctive child agent.';
@@ -85,6 +100,7 @@ export function calculateCompatibility(parentA, parentB) {
     skill,
     knowledge,
     mutation,
+    executionSynergy,
     explanation
   };
 }

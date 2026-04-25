@@ -21,6 +21,8 @@
 - [2026-04-25：完整项目说明书与逆向 PRD](./2026-04-25-完整项目说明书与逆向prd.zh-CN.md)
 - [2026-04-25：Agent Evolution Protocol v0.3 迭代](./2026-04-25-agent-evolution-protocol-v0.3-迭代.zh-CN.md)
 - [2026-04-25：P0 染色体协议版本迭代](./2026-04-25-p0-染色体协议版本迭代.zh-CN.md)
+- [2026-04-25：在线多人联机与技能执行重构](./2026-04-25-online-multiplayer-skill-execution.zh-CN.md)
+- [2026-04-25：OpenClaw Gateway 接入与 Room Code 匹配系统](./2026-04-25-openclaw-gateway接入与room-code匹配系统.zh-CN.md) ← **最新**
 - [开发日志规则](./开发日志规则.zh-CN.md)
 
 ## 项目记忆 Skill 分支
@@ -37,10 +39,11 @@
 - 有 Agent Genome mock 数据。
 - 有 compatibility、fusion、gene-fusion、evaluation、arena 五个核心逻辑模块。
 - 有中英文 PRD、架构、Demo、使用说明、后续规划文档。
-- 当前主 PRD 指针为 `docs-zh/prd-current.zh-CN.md`，当前版本为 `docs-zh/prd-v0.3.zh-CN.md`。
+- 当前主 PRD 版本为 `docs-zh/prd-v0.5-openclaw-skill-room-code.zh-CN.md`（最新，已实现待验收）。
 - 当前完整项目说明书为 `docs-zh/project-handbook-current.zh-CN.md`。
-- 有 OpenClaw × EvoMate 融合 PRD。
+- 有 OpenClaw × EvoMate 融合 PRD（`docs-zh/openclaw-evomate-integration-prd.zh-CN.md`）。
 - 有闪电路演材料和两套已生成 Pitch 图片。
+- **v0.5 新增**：Room Code 匹配系统、OpenClaw Gateway WebSocket Client、EvoMate Skill（`skill/SKILL.md`）已完成开发。
 
 ## 维护原则
 

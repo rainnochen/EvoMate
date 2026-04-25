@@ -42,26 +42,54 @@
           <div class="section-head">
             <div>
               <p class="eyebrow">Step 1</p>
-              <h2>Arena & Parent Selection</h2>
+              <h2>Agent & Skill Execution</h2>
             </div>
-            <button id="breed-button" class="primary-action" type="button">Breed Selected Agents</button>
+            <button id="find-match-button" class="primary-action" type="button" disabled>Find Match</button>
           </div>
 
           <div id="arena-selector" class="arena-selector"></div>
 
           <div class="match-layout">
             <div>
+              <p class="eyebrow">Select Your Agent</p>
               <div id="agent-grid" class="agent-grid"></div>
-            </div>
-            <aside class="compatibility-panel" aria-live="polite">
-              <p class="eyebrow">Compatibility</p>
-              <div class="score-dial">
-                <strong id="compat-total">--</strong>
-                <span>match score</span>
+              
+              <div id="skill-section" class="skill-section" style="margin-top: 24px; display: none;">
+                <p class="eyebrow">Skill Instruction</p>
+                <div class="skill-input-group">
+                  <textarea id="skill-instruction" placeholder="Enter a task or instruction for your agent... e.g. Write a script to parse logs" rows="3"></textarea>
+                  <button id="execute-skill-button" class="secondary-action" type="button">Execute</button>
+                </div>
               </div>
-              <div id="compat-bars" class="metric-bars"></div>
-              <p id="compat-explanation" class="panel-note"></p>
-              <div id="parent-evaluation" class="parent-evaluation"></div>
+            </div>
+            
+            <aside class="multiplayer-panel" aria-live="polite">
+              <p class="eyebrow">Lobby & Opponent</p>
+              <div id="lobby-status" class="lobby-status empty-state">
+                Select an agent and execute a skill to join the matchmaking queue.
+              </div>
+              
+              <div id="my-skill-result" class="skill-result-card" style="display: none; margin-top: 16px;">
+                <span class="parent-label">My Execution</span>
+                <p id="my-approach" class="approach-text"></p>
+                <pre id="my-output"></pre>
+              </div>
+
+              <div id="opponent-skill-result" class="skill-result-card" style="display: none; margin-top: 16px; border-color: var(--coral);">
+                <span class="parent-label" style="color: var(--coral)">Opponent's Execution</span>
+                <p id="opponent-approach" class="approach-text"></p>
+                <pre id="opponent-output"></pre>
+              </div>
+
+              <div id="compat-reveal" style="display: none; margin-top: 24px;">
+                <p class="eyebrow">Dynamic Compatibility</p>
+                <div class="score-dial">
+                  <strong id="compat-total">--</strong>
+                  <span>match score</span>
+                </div>
+                <div id="compat-bars" class="metric-bars"></div>
+                <p id="compat-explanation" class="panel-note"></p>
+              </div>
             </aside>
           </div>
         </section>
@@ -115,6 +143,7 @@
       </main>
     </div>
 
+    <script src="/socket.io/socket.io.js"></script>
     <script type="module" src="/apps/web/app.js"></script>
   </body>
 </html>

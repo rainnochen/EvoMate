@@ -4,10 +4,12 @@ import { buildGenomeChromosomes, compareEvolution, evaluateGenome } from '/src/c
 import { runEvolution } from '/src/core/evolution-service.js';
 
 const state = {
+  socket: null,
   agents: [],
   arenas: [],
   selectedArenaId: 'build_arena',
-  selectedIds: ['atlas', 'muse'],
+  myAgentId: null,
+  opponentAgent: null,
   compatibility: null,
   parentEvaluation: null,
   evolutionComparison: null,
@@ -15,7 +17,10 @@ const state = {
   childCandidates: [],
   exportPayload: null,
   fusionResult: null,
-  arenaTask: ''
+  arenaTask: '',
+  mySkillResult: null,
+  opponentSkillResult: null,
+  matchStatus: 'idle' // idle, joined, waiting, matched
 };
 
 const elements = {
@@ -25,7 +30,21 @@ const elements = {
   compatBars: document.getElementById('compat-bars'),
   compatExplanation: document.getElementById('compat-explanation'),
   parentEvaluation: document.getElementById('parent-evaluation'),
-  breedButton: document.getElementById('breed-button'),
+  
+  skillSection: document.getElementById('skill-section'),
+  skillInstruction: document.getElementById('skill-instruction'),
+  executeSkillButton: document.getElementById('execute-skill-button'),
+  findMatchButton: document.getElementById('find-match-button'),
+  
+  lobbyStatus: document.getElementById('lobby-status'),
+  mySkillResultCard: document.getElementById('my-skill-result'),
+  myApproach: document.getElementById('my-approach'),
+  myOutput: document.getElementById('my-output'),
+  opponentSkillResultCard: document.getElementById('opponent-skill-result'),
+  opponentApproach: document.getElementById('opponent-approach'),
+  opponentOutput: document.getElementById('opponent-output'),
+  compatReveal: document.getElementById('compat-reveal'),
+
   fusionState: document.getElementById('fusion-state'),
   fusionLog: document.getElementById('fusion-log'),
   childPanel: document.getElementById('child-panel'),
@@ -35,8 +54,12 @@ const elements = {
   arenaGrid: document.getElementById('arena-grid')
 };
 
+function getMyAgent() {
+  return state.agents.find((agent) => agent.id === state.myAgentId);
+}
+
 function selectedParents() {
-  return state.selectedIds.map((id) => state.agents.find((agent) => agent.id === id));
+  return [getMyAgent(), state.opponentAgent].filter(Boolean);
 }
 
 function selectedArena() {
@@ -85,16 +108,15 @@ function renderChromosomeStrip(agent) {
 }
 
 function renderAgentCard(agent) {
-  const selectedIndex = state.selectedIds.indexOf(agent.id);
-  const selectedClass = selectedIndex >= 0 ? 'selected' : '';
-  const parentLabel = selectedIndex === 0 ? 'Parent A' : selectedIndex === 1 ? 'Parent B' : 'Candidate';
+  const isSelected = state.myAgentId === agent.id;
+  const selectedClass = isSelected ? 'selected' : '';
 
   return `
     <article class="agent-card ${selectedClass}" data-agent-id="${agent.id}">
       <div class="agent-topline">
         <div class="avatar">${agent.avatar}</div>
         <div>
-          <span class="parent-label">${parentLabel}</span>
+          <span class="parent-label">${isSelected ? 'Your Agent' : 'Candidate'}</span>
           <h3>${agent.name}</h3>
           <p>${agent.archetype}</p>
         </div>
@@ -114,10 +136,6 @@ function renderAgentCard(agent) {
       <div class="mini-list">
         <strong>Chromosomes</strong>
         <div class="chromosome-strip">${renderChromosomeStrip(agent)}</div>
-      </div>
-      <div class="mini-list">
-        <strong>Memory</strong>
-        <p>${agent.memory[0]}</p>
       </div>
     </article>
   `;
@@ -155,24 +173,45 @@ function selectArena(arenaId) {
 }
 
 function selectAgent(agentId) {
-  if (state.selectedIds.includes(agentId)) return;
-  state.selectedIds = [state.selectedIds[1], agentId];
-  state.fusionResult = null;
-  state.evolutionComparison = null;
-  state.evolutionRun = null;
-  state.childCandidates = [];
-  state.exportPayload = null;
+  if (state.matchStatus !== 'idle') return;
+  state.myAgentId = agentId;
+  elements.skillSection.style.display = 'block';
+  
+  if (state.socket) {
+    state.socket.emit('CLIENT_JOIN', { agentId });
+  }
   renderAll();
 }
 
+function handleExecuteSkill() {
+  const instruction = elements.skillInstruction.value.trim();
+  if (!instruction || !state.myAgentId) return;
+  
+  elements.executeSkillButton.disabled = true;
+  elements.executeSkillButton.textContent = 'Executing...';
+  
+  state.socket.emit('SKILL_EXECUTE', { instruction });
+}
+
+function handleFindMatch() {
+  elements.findMatchButton.disabled = true;
+  elements.findMatchButton.textContent = 'Searching...';
+  state.matchStatus = 'waiting';
+  
+  elements.lobbyStatus.textContent = 'Searching for compatible genomes in the lobby...';
+  elements.lobbyStatus.className = 'lobby-status'; // remove empty-state
+  
+  state.socket.emit('REQUEST_MATCH');
+}
+
 function renderCompatibility() {
-  const [parentA, parentB] = selectedParents();
-  state.compatibility = calculateCompatibility(parentA, parentB);
+  if (!state.compatibility) return;
   const metrics = [
     ['Personality', state.compatibility.personality],
     ['Skill Mix', state.compatibility.skill],
     ['Knowledge', state.compatibility.knowledge],
-    ['Mutation', state.compatibility.mutation]
+    ['Mutation', state.compatibility.mutation],
+    ['Execution Synergy', state.compatibility.executionSynergy || 0]
   ];
 
   elements.compatTotal.textContent = state.compatibility.total;
@@ -184,9 +223,18 @@ function renderCompatibility() {
     </div>
   `).join('');
   elements.compatExplanation.textContent = state.compatibility.explanation;
+  elements.compatReveal.style.display = 'block';
 }
 
 function renderParentEvaluation() {
+  if (state.matchStatus !== 'matched') {
+    elements.parentEvaluation.innerHTML = `
+      <p class="eyebrow">Parent Baseline</p>
+      <div class="empty-state" style="min-height: 60px;">Waiting for Match</div>
+    `;
+    return;
+  }
+
   const arena = selectedArena();
   const [parentA, parentB] = selectedParents();
   const parentAResult = evaluateGenome(parentA, arena);
@@ -397,7 +445,7 @@ function renderChildReport() {
 function renderArena() {
   const arena = selectedArena();
   elements.arenaTask.textContent = arena ? arena.name : state.arenaTask;
-  if (!state.fusionResult) {
+  if (!state.fusionResult || state.matchStatus !== 'matched') {
     elements.evolutionDelta.className = 'evolution-delta empty-state';
     elements.evolutionDelta.textContent = 'Evolution delta appears after child generation.';
     elements.arenaGrid.className = 'arena-grid empty-state';
@@ -460,28 +508,63 @@ function renderAll() {
   renderArena();
 }
 
-function runFusion() {
-  const [parentA, parentB] = selectedParents();
-  const arena = selectedArena();
+function runFusion(matchPayload) {
   const chamber = document.querySelector('.dna-chamber');
   chamber.classList.add('is-running');
   elements.fusionState.textContent = 'Inheritance in progress';
   elements.fusionLog.innerHTML = `
-    <div class="log-line">Extracting Soul traits from ${parentA.name} and ${parentB.name}.</div>
-    <div class="log-line">Applying ${arena.name} selection pressure.</div>
+    <div class="log-line">Cross-server match found! Initializing fusion.</div>
+    <div class="log-line">Extracting Soul traits from both parents.</div>
+    <div class="log-line">Applying selection pressure.</div>
     <div class="log-line">Recombining skill pools and memory fragments.</div>
     <div class="log-line">Generating 3 child candidates for internal selection.</div>
-    <div class="log-line">Scanning mutation and export window.</div>
   `;
 
   window.setTimeout(() => {
-    state.evolutionRun = runEvolution(parentA, parentB, state.compatibility, arena);
+    state.evolutionRun = matchPayload.evolutionRun;
     state.fusionResult = state.evolutionRun.fusionResult;
     state.childCandidates = state.evolutionRun.candidates.map((candidate) => candidate.summary);
     state.exportPayload = state.evolutionRun.exportPayload;
     renderAll();
     document.getElementById('child-report').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 1400);
+  }, 2000);
+}
+
+function setupSocket() {
+  state.socket = io();
+  
+  state.socket.on('SYSTEM_MESSAGE', (payload) => {
+    console.log('[System]', payload.message);
+  });
+  
+  state.socket.on('SKILL_OUTPUT', (result) => {
+    state.mySkillResult = result;
+    elements.executeSkillButton.textContent = 'Executed';
+    
+    elements.mySkillResultCard.style.display = 'block';
+    elements.myApproach.textContent = result.approach;
+    elements.myOutput.textContent = result.output;
+    
+    elements.findMatchButton.disabled = false;
+    elements.lobbyStatus.textContent = 'Ready to find a partner.';
+  });
+  
+  state.socket.on('MATCH_FOUND', (payload) => {
+    state.matchStatus = 'matched';
+    state.opponentAgent = payload.parentA.id === state.myAgentId ? payload.parentB : payload.parentA;
+    state.opponentSkillResult = payload.skillResultA.output === state.mySkillResult.output ? payload.skillResultB : payload.skillResultA;
+    state.compatibility = payload.compatibility;
+    
+    elements.findMatchButton.textContent = 'Match Found!';
+    elements.lobbyStatus.textContent = `Matched with ${state.opponentAgent.name}! Starting Fusion...`;
+    
+    elements.opponentSkillResultCard.style.display = 'block';
+    elements.opponentApproach.textContent = state.opponentSkillResult.approach;
+    elements.opponentOutput.textContent = state.opponentSkillResult.output;
+    
+    renderCompatibility();
+    runFusion(payload);
+  });
 }
 
 async function boot() {
@@ -491,7 +574,11 @@ async function boot() {
   state.arenas = data.arenas;
   state.selectedArenaId = data.selectedArenaId || state.selectedArenaId;
   state.arenaTask = data.arenaTask;
-  elements.breedButton.addEventListener('click', runFusion);
+  
+  elements.executeSkillButton.addEventListener('click', handleExecuteSkill);
+  elements.findMatchButton.addEventListener('click', handleFindMatch);
+  
+  setupSocket();
   renderAll();
 }
 
