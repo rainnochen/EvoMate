@@ -118,7 +118,7 @@ Arena pressure applied: Build Arena.
 ```text
 src/core/evaluation-engine.js
 docs-zh/evomate-product-spec-v0.1-implementation.zh-CN.md
-开发日志/2026-04-25-20-34-46-产品说明书-v0.1-开发迭代.zh-CN.md
+开发日志/2026-04-25-07-产品说明书-v0.1-开发迭代.zh-CN.md
 ```
 
 ### 修改
