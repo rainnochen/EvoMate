@@ -5,7 +5,7 @@
 # EvoMate v0.5 PRD — OpenClaw Skill 驱动的 Room Code 进化系统
 
 **版本**：v0.5
-**更新时间**：2026-04-25
+**更新时间**：2026-04-25 20:37:16
 **状态**：已实现 (待端到端验收)
 **前置版本**：[v0.4 在线多人匹配与技能执行](./prd-v0.4-online-multiplayer.zh-CN.md)
 **对应路线**：路线 A — True Multiplayer + OpenClaw Native Skill
