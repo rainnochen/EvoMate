@@ -1,3 +1,7 @@
+> 🧬 **[EvoMate](https://github.com/rainnochen/EvoMate/blob/main/README.md)** — *Agent Digital Genetics Lab*
+> [🏠 主页 / Home](https://github.com/rainnochen/EvoMate/blob/main/README.md) | [📖 最新 PRD](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/prd-current.zh-CN.md) | [🏗 架构文档](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/architecture.zh-CN.md) | [📝 开发日志](https://github.com/rainnochen/EvoMate/tree/main/开发日志) | [🤖 OpenClaw 接入](https://github.com/rainnochen/EvoMate/blob/main/docs-zh/openclaw-evomate-integration-prd.zh-CN.md)
+---
+
 # EvoMate 中文闪电路演 PPT 图片 Prompts
 
 用途：把下面每个 prompt 单独喂给 ChatGPT Image / GPT Image 2，生成一张 16:9 PPT 图片。建议先统一生成 8 张，最后再挑 5-6 张用于现场闪电路演。
