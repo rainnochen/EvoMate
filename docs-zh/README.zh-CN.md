@@ -10,6 +10,8 @@
 
 - [项目总览](./project-overview.zh-CN.md)
 - [当前主 PRD](./prd-current.zh-CN.md)
+- [PRD v0.5](./prd-v0.5-openclaw-skill-room-code.zh-CN.md)
+- [PRD v0.4](./prd-v0.4-online-multiplayer.zh-CN.md)
 - [PRD v0.3](./prd-v0.3.zh-CN.md)
 - [PRD v0.2](./prd-v0.2.zh-CN.md)
 - [PRD v0.1](./prd-v0.1.zh-CN.md)
