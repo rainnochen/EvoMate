@@ -1,0 +1,8 @@
+[
+  "decision_strengthen: added \"if repo is large\"",
+  "decision_strengthen: added \"if git worktree is dirty\"",
+  "output_harden: added output section \"options\"",
+  "output_harden: added output section \"risks\"",
+  "output_harden: added output section \"validation\"",
+  "safety_harden: added constraint \"state assumptions explicitly\""
+]

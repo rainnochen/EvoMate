@@ -1,0 +1,32 @@
+{
+  "createdAt": "2026-04-26T03:55:12.158Z",
+  "selectedPairs": [
+    {
+      "pairLabel": "1password__canvas",
+      "skillA": "1password",
+      "skillB": "canvas",
+      "compatibility": 0.35,
+      "fitness": 0.85,
+      "staticGatePass": true,
+      "taskScore": 0.75,
+      "childId": "child_parent_a_parent_b_1777175712162",
+      "childMarkdownPath": "/Users/chenbuyu/Documents/Codex/20260425_codex_program/evolver-hackathon/outputs/skill-showcase-batch/2026-04-26T03-55-12-154Z/pair-runs/001/1password__canvas/outputs/children/child_parent_a_parent_b_1777175712162.md",
+      "childGenePath": "/Users/chenbuyu/Documents/Codex/20260425_codex_program/evolver-hackathon/outputs/skill-showcase-batch/2026-04-26T03-55-12-154Z/pair-runs/001/1password__canvas/outputs/genes/child_parent_a_parent_b_1777175712162.gene.json",
+      "lineagePath": "/Users/chenbuyu/Documents/Codex/20260425_codex_program/evolver-hackathon/outputs/skill-showcase-batch/2026-04-26T03-55-12-154Z/pair-runs/001/1password__canvas/outputs/lineage/child_parent_a_parent_b_1777175712162.lineage.json",
+      "evalPath": "/Users/chenbuyu/Documents/Codex/20260425_codex_program/evolver-hackathon/outputs/skill-showcase-batch/2026-04-26T03-55-12-154Z/pair-runs/001/1password__canvas/outputs/evaluations/child_parent_a_parent_b_1777175712162.eval.json",
+      "mutationCount": 6
+    },
+    {
+      "pairLabel": "1password__acp-router",
+      "skillA": "1password",
+      "skillB": "acp-router",
+      "error": "Parent genes are not compatible enough: score=0"
+    },
+    {
+      "pairLabel": "1password__prose",
+      "skillA": "1password",
+      "skillB": "prose",
+      "error": "Parent genes are not compatible enough: score=0"
+    }
+  ]
+}

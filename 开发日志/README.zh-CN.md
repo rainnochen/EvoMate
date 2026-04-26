@@ -27,6 +27,7 @@
 - [2026-04-25：P0 染色体协议版本迭代](./2026-04-25-11-p0-染色体协议版本迭代.zh-CN.md)
 - [2026-04-25：在线多人联机与技能执行重构](./2026-04-25-12-online-multiplayer-skill-execution.zh-CN.md)
 - [2026-04-25：OpenClaw Gateway 接入与 Room Code 匹配系统](./2026-04-25-13-openclaw-gateway接入与room-code匹配系统.zh-CN.md) ← **最新**
+- [2026-04-26：OpenClaw Skills 批量拉取与 Showcase 搜索](./2026-04-26-openclaw-skills-batch-showcase.zh-CN.md)
 - [开发日志规则](./开发日志规则.zh-CN.md)
 
 ## 项目记忆 Skill 分支
@@ -48,6 +49,7 @@
 - 有 OpenClaw × EvoMate 融合 PRD（`docs-zh/openclaw-evomate-integration-prd.zh-CN.md`）。
 - 有闪电路演材料和两套已生成 Pitch 图片。
 - **v0.5 新增**：Room Code 匹配系统、OpenClaw Gateway WebSocket Client、EvoMate Skill（`skill/SKILL.md`）已完成开发。
+- **新增批处理能力**：OpenClaw Skills 批量拉取与 pairwise showcase 搜索脚本已加入，可直接扫描 `openclaw-main/skills` 与 `extensions/*/skills`。
 
 ## 维护原则
 

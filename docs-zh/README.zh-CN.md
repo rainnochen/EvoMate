@@ -34,7 +34,6 @@
 - [EvoMate Gene Layer 开发版本 V1](./evolver-gene-layer-development-v1.zh-CN.md)
 - [EvoMate 产品说明书 v0.1 实现说明](./evomate-product-spec-v0.1-implementation.zh-CN.md)
 - [长期开发日志目录](../开发日志/README.zh-CN.md)
-- [分布式开发机制](../分布式开发机制.zh-CN.md)
 
 ## 当前项目定位
 
