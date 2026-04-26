@@ -155,16 +155,6 @@ outputs/skill-showcase-batch/<timestamp>/
 - [agentGene 系统设计方案](./agent-evomate/docs/方案.md) — 完整的基因协议与重组算法设计
 - [模块架构说明 (design.md)](./agent-evomate/docs/design.md) — 模块入口与运行说明
 
-### 中文文档集 (docs-zh/)
-- [项目总览](./docs-zh/project-overview.zh-CN.md)
-- [当前完整项目说明书](./docs-zh/project-handbook-current.zh-CN.md)
-- [当前主 PRD (v0.5)](./docs-zh/prd-current.zh-CN.md)
-- [技术架构说明](./docs-zh/architecture.zh-CN.md)
-- [Genome Schema 设计](./docs-zh/genome-schema.zh-CN.md)
-- [OpenClaw × EvoMate 集成 PRD](./docs-zh/openclaw-evomate-integration-prd.zh-CN.md)
-- [批量技能 Showcase 说明](./docs-zh/skills-batch-showcase.zh-CN.md)
-- [使用说明书](./docs-zh/user-manual.zh-CN.md)
-- [全部中文文档索引](./docs-zh/README.zh-CN.md)
 
 
 
