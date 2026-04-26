@@ -1,2 +1,19 @@
-node_modules
+node_modules/
 .DS_Store
+
+# Local environment
+.env
+.env.*
+*.log
+
+# Generated evolution artifacts
+outputs/
+agent-evomate/outputs/
+test-demo/outputs/
+
+# Local public-skill research pools
+public-skill-repos/
+public-skills/
+public-skill-pool/
+targeted-runs/
+runs/

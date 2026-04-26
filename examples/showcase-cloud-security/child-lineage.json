@@ -1,0 +1,50 @@
+{
+  "child_id": "child_parent_a_parent_b_1777177178890",
+  "parents": [
+    "parent_a",
+    "parent_b"
+  ],
+  "compatibility_score": 0.35,
+  "compatible": true,
+  "compatibility_warnings": [
+    "Low overlap between parent intents/workflows"
+  ],
+  "crossover_profile": "balanced",
+  "workflow_mapping": {
+    "discover": "template",
+    "analyze": "A",
+    "plan": "template",
+    "validate": "template",
+    "report": "template"
+  },
+  "decision_warnings": [],
+  "mutations": [
+    "decision_strengthen: added \"if repo is large\"",
+    "decision_strengthen: added \"if git worktree is dirty\"",
+    "output_harden: added output section \"options\"",
+    "output_harden: added output section \"risks\"",
+    "output_harden: added output section \"validation\"",
+    "safety_harden: added constraint \"state assumptions explicitly\""
+  ],
+  "evaluation_summary": {
+    "staticEval": {
+      "schema_score": 1,
+      "consistency_score": 1,
+      "safety_score": 1,
+      "inheritance_balance_score": 0.5,
+      "novelty_score": 1
+    },
+    "taskEval": {
+      "provided": true,
+      "task_score": 1,
+      "samples": [
+        1
+      ]
+    },
+    "fitness": {
+      "static_gate_pass": true,
+      "fitness": 0.925
+    }
+  },
+  "created_at": "2026-04-26T04:19:38.891Z"
+}

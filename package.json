@@ -1,16 +1,23 @@
 {
-  "name": "evomate-hackathon",
+  "name": "evomate",
   "version": "0.1.0",
-  "private": true,
-  "description": "Hackathon MVP scaffold for EvoMate, an Agent digital genetics lab built on EvoMap and evolver ideas.",
+  "private": false,
+  "description": "EvoMate is an Agent Skill Breeding Engine that turns parent skills into traceable child skills through agentGene, crossover, mutation repair, evaluation, and lineage.",
   "scripts": {
-    "dev": "node scripts/server.js",
-    "start": "node scripts/server.js",
-    "test:gateway": "node scripts/openclaw-gateway-test.js",
+    "evolve": "node agent-evomate/src/pipeline/evolve.js --root agent-evomate --parentA agents/parent_a/agent.md --parentB agents/parent_b/agent.md --profile balanced",
     "skills:showcase": "node scripts/skills-batch-showcase.mjs",
-    "check": "node --check scripts/dev-server.js && node --check apps/web/app.js && node --check src/core/compatibility-engine.js && node --check src/core/genome-engine.js && node --check src/core/fusion-engine.js && node --check src/core/gene-fusion-engine.js && node --check src/core/evaluation-engine.js && node --check src/core/evolution-service.js && node --check src/core/arena-engine.js && node --check src/integrations/evolver/asset-to-genome.js",
-    "evolver:evolve": "node agent-evolver/src/pipeline/evolve.js --root agent-evolver --parentA agents/parent_a/agent.md --parentB agents/parent_b/agent.md --profile balanced"
+    "check": "node --check agent-evomate/src/pipeline/evolve.js && node --check scripts/skills-batch-showcase.mjs"
   },
+  "keywords": [
+    "agent",
+    "skills",
+    "agentGene",
+    "evolution",
+    "crossover",
+    "mutation",
+    "lineage"
+  ],
+  "license": "MIT",
   "engines": {
     "node": ">=18"
   },
