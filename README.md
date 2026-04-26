@@ -166,9 +166,7 @@ outputs/skill-showcase-batch/<timestamp>/
 - [使用说明书](./docs-zh/user-manual.zh-CN.md)
 - [全部中文文档索引](./docs-zh/README.zh-CN.md)
 
-### 开发日志
-- [开发日志索引](./开发日志/README.zh-CN.md)
-- [最新：批量技能 Showcase (2026-04-26)](./开发日志/2026-04-26-openclaw-skills-batch-showcase.zh-CN.md)
+
 
 ---
 
